@@ -83,4 +83,42 @@ window.addEventListener('DOMContentLoaded', function(){
     }
 
     setClock('timer', deadline);
+
+
+    //modal 
+
+    let more = document.querySelector('.more'),
+        overlay = document.querySelector('.overlay'),
+        close = document.querySelector('.popup-close'),
+        infoBlock = document.querySelector('.info');
+
+    function popUpShow(target){
+        overlay.style.display = 'block';
+        this.classList.add('more-splash');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function popUpHide(target){
+        overlay.style.display = 'none';
+        more.classList.remove('more-splash');
+        document.body.style.overflow = '';
+    }
+
+
+    more.addEventListener('click',function(){
+        popUpShow(this);
+    });
+
+    close.addEventListener('click',function(){
+        popUpHide(this);
+        
+    });
+
+    infoBlock.addEventListener('click',function(e){      
+        if(e.target.classList.contains('description-btn')){
+            popUpShow(this);
+        }
+    });
+
+
 });
